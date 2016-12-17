@@ -3,6 +3,11 @@ body {
     line-height: 30px;
 }
 
+.logo {
+  color:white;
+  font-family: 'Pacifico', cursive;
+}
+
 .set-radius-zero {
     border-radius: 0px;
     -moz-border-radius: 0px;
