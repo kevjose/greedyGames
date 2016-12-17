@@ -49,8 +49,9 @@
                   <hr>
                   <em>Full-stack JS Developer | Frontend Engineer</em>
                   <hr>
-                  <i class="fa fa-twitter-square" aria-hidden="true"></i>&nbsp;
-                  <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+                  <a href="https://in.linkedin.com/in/kevin-jose-860a926b" target="_blank"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                  &nbsp;
+                  <a href="https://twitter.com/kevjose91" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
                   <hr />
                 </div>
               </li>
@@ -122,9 +123,6 @@
               </button>
               <br><br>
               <p id="optimizeBy"></p>
-
-              <br><br>
-
               <ul id="allPathList" class="list-group">
 
               </ul>
@@ -188,31 +186,15 @@
   <!-- FOOTER SECTION END-->
   <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
   <!-- Third-party Libraries -->
-  <script src="vendor/angular.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.1.4/ui-bootstrap-tpls.min.js"></script>
+
+
   <!-- CORE JQUERY SCRIPTS -->
   <script src="vendor/jquery-1.11.1.js"></script>
   <!-- BOOTSTRAP SCRIPTS  -->
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  <script type="text/javascript">
-    function init() {
-      window.addEventListener('scroll', function(e){
-        var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-          shrinkOn = 125,
-          header = document.getElementById('fixed-top-nav');
-        if (distanceY > shrinkOn) {
-          header.className = "menu-section fixed-nav";
-        } else {
-          header.className = "menu-section";
-        }
-      });
-    }
-    window.onload = init();
-  </script>
 
   <!-- Application Code -->
-  <script src="app.js"></script>
   <script src="pathFinder.js"></script>
-  <script src="controllers/home.js"></script>
+  <script src="custom.js"></script>
 </body>
 </html>
