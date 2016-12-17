@@ -162,8 +162,13 @@ function callPaths(){
     alert("select source and destination!");
     return;
   }
+  clearButton('btnS');
+  clearButton('btnT');
+  clearButton('btnU');
+  clearButton('btnV');
+  clearButton('btnW');
+  clearButton('btnX');
   fromBtn = document.getElementById('btn'+from);
-  debugger;
   addClass(fromBtn,'btn-warning');
 
   toBtn = document.getElementById('btn'+to);
@@ -199,7 +204,6 @@ function graphJoin(itemArr){
     str += itemArr[i];
     if(i == (itemArr.length-1))
       return str;
-    //debugger;
     if(itemArr[i+1] && graphObj[itemArr[i]][itemArr[i+1]] )
       var param = graphObj[itemArr[i]][itemArr[i+1]][optimizeBy];
       if(param)
