@@ -305,3 +305,10 @@ footer {
 .btn-google {
     background-color: #c32f10;
 }
+
+.btn-round {
+  border-radius: 15px;
+}
+.panel {
+  min-height: 400px;
+}

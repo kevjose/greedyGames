@@ -156,12 +156,26 @@ const graphObj = {
 };
 
 function callPaths(){
+  var from = document.getElementById('sel1').value;
+  var to  = document.getElementById('sel2').value;
+  if(!from || !to) {
+    alert("select source and destination!");
+    return;
+  }
+  fromBtn = document.getElementById('btn'+from);
+  debugger;
+  addClass(fromBtn,'btn-warning');
+
+  toBtn = document.getElementById('btn'+to);
+  addClass(toBtn,'btn-warning');
+
   document.getElementById("allPathList").innerHTML = "";
   var allpaths = paths({
     graph,
-    from:document.getElementById('sel1').value,
-    to:document.getElementById('sel2').value
+    from:from,
+    to:to
   });
+
   var allPathList = document.getElementById("allPathList");
   for(var i=0; i<allpaths.length; i++){
     var item = allpaths[i];
@@ -171,6 +185,11 @@ function callPaths(){
     allPathList.appendChild(elem);
   }
   console.log(allpaths);
+  if(optimizeBy == 0)
+    optimizeByText = "Speed";
+  else
+    optimizeByText = "Distance";
+  document.getElementById("optimizeBy").innerHTML = "<em>optimized by "+optimizeByText+"</em>";
 }
 
 function graphJoin(itemArr){
@@ -187,4 +206,75 @@ function graphJoin(itemArr){
         str += "-- ("+param +") -->";
   }
   return str;
+}
+
+
+/** add or remove classes **/
+function hasClass(el, className) {
+  if (el.classList)
+    return el.classList.contains(className)
+  else
+    return !!el.className.match(new RegExp('(\\s|^)' + className + '(\\s|$)'))
+}
+
+function addClass(el, className) {
+  if (el.classList)
+    el.classList.add(className)
+  else if (!hasClass(el, className)) el.className += " " + className
+}
+
+function removeClass(el, className) {
+  if (el.classList)
+    el.classList.remove(className)
+  else if (hasClass(el, className)) {
+    var reg = new RegExp('(\\s|^)' + className + '(\\s|$)')
+    el.className=el.className.replace(reg, ' ')
+  }
+}
+var source = 0;
+var destination = 0;
+
+function sourceDest(id,value){
+  if(source == 0 || destination == 0){
+    var el = document.getElementById(id);
+    if(source == 0){
+      addClass(el, 'btn-warning');
+      document.getElementById('sel1').value = value;
+      source = 1;
+      return;
+    }
+    if(destination == 0){
+      addClass(el, 'btn-warning');
+      document.getElementById('sel2').value = value;
+      destination = 1;
+      if(source && destination)
+      callPaths();
+      return;
+    }
+  }
+  if(source ==1 && destination ==1){
+    clearSourceDest();
+    alert("please select source and destination to view the paths");
+  }
+
+}
+
+function clearSourceDest (){
+  source =0;
+  destination = 0;
+  document.getElementById('sel1').value ="";
+  document.getElementById('sel2').value ="";
+  document.getElementById("allPathList").innerHTML = "";
+  clearButton('btnS');
+  clearButton('btnT');
+  clearButton('btnU');
+  clearButton('btnV');
+  clearButton('btnW');
+  clearButton('btnX');
+  return ;
+}
+
+function clearButton (btnId){
+ var btnId  = document.getElementById(btnId)
+ removeClass(btnId,'btn-warning');
 }
