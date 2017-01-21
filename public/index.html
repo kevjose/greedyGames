@@ -4,15 +4,16 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>CK-12</title>
+  <title>Cleartrip</title>
 
   <!-- BOOTSTRAP CORE STYLE  -->
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <!-- FONT AWESOME ICONS  -->
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-  <link href="//fonts.googleapis.com/css?family=Roboto|Pacifico" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Roboto|Pacifico|Ubuntu" rel="stylesheet">
   <!-- CUSTOM STYLE  -->
   <link href="stylesheets/style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="stylesheets/angular-toastr.css">
 </head>
 <body>
   <div class="custom-nav-cover" style="min-height:165px;">
@@ -25,7 +26,7 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="/">
-            <h2 class="logo">ClearTrip</h2>
+            <h2 class="logo">Cleartrip</h2>
           </a>
         </div>
 
@@ -49,9 +50,12 @@
                   <hr>
                   <em>Full-stack JS Developer | Frontend Engineer</em>
                   <hr>
-                  <a href="https://in.linkedin.com/in/kevin-jose-860a926b" target="_blank"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                  <a href="https://in.linkedin.com/in/kevin-jose-860a926b" target="_blank"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
                   &nbsp;
-                  <a href="https://twitter.com/kevjose91" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+                  <a href="https://twitter.com/kevjose91" target="_blank"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
+                  &nbsp;
+                  <a href="https://github.com/kevjose" target="_blank"><i class="fa fa-github-square fa-2x" aria-hidden="true"></i></a>
+
                   <hr />
                 </div>
               </li>
@@ -67,7 +71,7 @@
           <div class="col-md-12">
             <div class="navbar-collapse collapse ">
               <ul id="menu-top" class="nav navbar-nav navbar-right">
-                <li><a class="menu-top-active" href="index.html">ClearTrip</a></li>
+                <li><a class="menu-top-active" href="index.html">Hacker News</a></li>
               </ul>
             </div>
           </div>
@@ -77,9 +81,78 @@
     <!-- MENU SECTION END-->
   </div>
   <div class="content-wrapper" ng-app="MyApp">
-    <div class="container" ng-controller="HomeCtrl as home">
-      <div ng-cloak>
-        {{home.isLoading}}
+    <div class="container" ng-controller="HomeCtrl as hm">
+      <h2 class="text-success">Hacker News</h2>
+      <h3 class="text-info">Best Hacker News Articles</h3>
+      <br>
+      <div class="row">
+        <div class="col-md-4">
+          <form>
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                <input type="text" class="form-control" placeholder="Search by Title" ng-model="hm.searchTitle" style="z-index: 1;">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-8">
+          <a href="#" class="btn btn-default" ng-click="hm.sortType = 'num_points'; hm.sortReverse = !hm.sortReverse">
+            Number of Points
+            <span ng-show="hm.sortType == 'num_points' && !hm.sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="hm.sortType == 'num_points' && hm.sortReverse" class="fa fa-caret-up"></span>
+          </a>
+          <div class="clearfix visible-xs"></div>
+          <a href="#" class="btn btn-default" ng-click="hm.sortType = 'num_comments'; hm.sortReverse = !hm.sortReverse">
+            Number of Comments
+            <span ng-show="hm.sortType == 'num_comments' && !hm.sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="hm.sortType == 'num_comments' && hm.sortReverse" class="fa fa-caret-up"></span>
+          </a>
+          <div class="clearfix visible-xs"></div>
+          <a href="#" class="btn btn-default" ng-click="hm.sortType = 'author'; hm.sortReverse = !hm.sortReverse">
+            Sort by Author Name
+            <span ng-show="hm.sortType == 'author' && !hm.sortReverse" class="fa fa-sort-alpha-asc"></span>
+            <span ng-show="hm.sortType == 'author' && hm.sortReverse" class="fa fa-sort-alpha-desc"></span>
+          </a>
+          <div class="clearfix visible-xs"></div>
+
+        </div>
+      </div>
+      <hr>
+      <div ng-repeat="article in hm.articles |orderBy:hm.sortType:hm.sortReverse |filter:{title: hm.searchTitle} track by $index">
+        <div class = "panel"
+          ng-class="{'panel-success': article.num_points > 10, 'panel-info': article.num_points <= 10, 'panel-danger':article.num_points <= 2 }">
+          <div class = "panel-heading">
+            <h3 class = "panel-title">{{$index + 1}}. &nbsp; {{article.title}}</h3>
+          </div>
+
+          <div class = "panel-body">
+            <div class="row">
+              <div class="col-md-12">
+                <a href="{{article.url}}" target="_blank">{{article.url}}</a>
+              </div>
+            </div>
+            <br>
+            <div class="row col-md-8">
+              <div class="col-md-3">
+                <strong><i class="fa fa-chevron-circle-up" aria-hidden="true"></i></strong>
+                <em>{{article.num_points}}</em>
+              </div>
+              <div class="col-md-3">
+                <strong><i class="fa fa-comments" aria-hidden="true"></i></strong>
+                <em>{{article.num_comments}}</em>
+              </div>
+              <div class="col-md-3">
+                <strong><i class="fa fa-user" aria-hidden="true"></i></strong>
+                <em>{{article.author}}</em>
+              </div>
+              <div class="col-md-3">
+                <strong><i class="fa fa-calendar" aria-hidden="true"></i></strong>
+                <em>{{article.created_at}}</em>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -105,6 +178,8 @@
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <!-- AngularJS Libraries -->
   <script src="vendor/angular.js"></script>
+  <script src="vendor/angular-animate.js"></script>
+  <script src="vendor/angular-toastr.tpls.js"></script>
   <script src="vendor/custom.js"></script>
   <!-- Application Code -->
   <!-- Application Code -->

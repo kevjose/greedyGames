@@ -20,6 +20,9 @@
       // updateLoginCount: function(data){
       //   return $http.put('/api/user/count', data);
       // }
+      getArticles: function(){
+        return $http.get('http://starlord.hackerearth.com/cleartrip/hackernews');
+      }
     };
   }
 })();

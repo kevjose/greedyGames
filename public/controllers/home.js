@@ -5,17 +5,34 @@
     .module('MyApp')
     .controller('HomeCtrl', HomeCtrl);
 
-  HomeCtrl.$inject = ['HomeService'];
-  function HomeCtrl(HomeService) {
+  HomeCtrl.$inject = ['HomeService','toastr'];
+  function HomeCtrl(HomeService, toastr) {
     var vm = this;
-    vm.isLoading = true;
+    vm.articles;
 
     vm.initialise = initialise;
 
     /////////////////////////////
 
     function initialise() {
-      console.log("Home controller");
+
+      if(!localStorage.getItem('articles')){
+        HomeService
+        .getArticles()
+        .then(function(response){
+          vm.articles = response.data;
+          vm.articles.shift();
+          localStorage.clear();
+          localStorage.setItem('articles',JSON.stringify(vm.articles))
+          toastr.success('Request made from remote when locastorage article is not present', 'Information');
+        })
+        .catch(function(error){
+          console.log(error);
+        })
+      }else{
+        vm.articles = JSON.parse(localStorage.getItem('articles'));
+        toastr.success('Request made from web storage when article is present in localStorage', 'Information');
+      }
     }
 
     vm.initialise();
