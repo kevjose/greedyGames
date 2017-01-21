@@ -77,8 +77,11 @@
     <!-- MENU SECTION END-->
   </div>
   <div class="content-wrapper" ng-app="MyApp">
-    <div class="container" ng-controller="HomeCtrl as home" ng-cloak>
-      {{home.isLoading}}
+    <div class="container" ng-controller="HomeCtrl as home">
+      <div ng-cloak>
+        {{home.isLoading}}
+      </div>
+
     </div>
   </div>
   <!-- CONTENT-WRAPPER SECTION END-->
