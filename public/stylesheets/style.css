@@ -23,9 +23,9 @@ body {
 .page-head-line {
     font-weight: 900;
     padding-bottom: 20px;
-    border-bottom: 2px solid #F0677C;
+    border-bottom: 2px solid skyblue;
     text-transform: uppercase;
-    color: #F0677C;
+    color: skyblue;
     font-size: 20px;
     margin-bottom: 40px;
 }
@@ -52,7 +52,7 @@ margin-bottom: 20px;
 color: #fff;
 text-align: center;
 cursor:pointer;
-background-color:#F0677C;
+background-color:skyblue;
 -webkit-border-radius:50%;
     -moz-border-radius:50%;
 }
@@ -60,7 +60,7 @@ background-color:#F0677C;
    HEADER SECTION STYLES
  ============================================================ */
 header {
-    background-color: #F0677C;
+    background-color: skyblue;
     color: #fff;
     padding: 10px;
     text-align: right;
@@ -77,7 +77,7 @@ header {
 }
 
 .navbar-brand {
-    width: 250px;
+    width: 300px;
     padding-top: 30px;
 }
 
@@ -91,7 +91,7 @@ header {
     -moz-border-radius: 50%;
     height: 60px;
     width: 60px;
-    background-color: #F0677C;
+    background-color: skyblue;
     color: #fff;
 }
 
@@ -110,7 +110,7 @@ header {
 
     .user-settings-wrapper .nav > li > a:hover,.user-settings-wrapper .nav > li > a:focus {
         text-decoration: none;
-        background-color: #C36464!important;
+        background-color: #09c!important;
     }
 
     .user-settings-wrapper img {
@@ -152,24 +152,24 @@ header {
 }
 
 .menu-top-active {
-    background-color: #C36464;
+    background-color: #09c;
 }
 
 .menu-section .nav > li > a:hover,.menu-section .nav > li > a:focus {
-    background-color: #F0677C!important;
+    background-color: skyblue!important;
 }
 
 .menu-section .dropdown-menu > li > a:hover,.menu-section .dropdown-menu > li > a:focus {
-    background-color: #F0677C!important;
+    background-color: skyblue!important;
 }
 
 .navbar-inverse {
-    background-color: #C36464;
+    background-color: #09c;
     border-color: transparent;
 }
 
 .navbar-toggle {
-    background-color: #F0677C;
+    background-color: skyblue;
     border: 1px solid #fff;
 }
 
@@ -181,7 +181,7 @@ header {
 * Fixed Menu
 */
 .fixed-nav {
-  border-top: #C36464 solid 5px;
+  border-top: #09c solid 5px;
   top: 0px;
   position: fixed;
   z-index: 2;
@@ -193,7 +193,7 @@ footer {
     padding: 10px;
     color: #fff;
     font-size: 12px;
-    background-color: #C36464;
+    background-color: #09c;
 }
 
     footer a, footer a:hover {

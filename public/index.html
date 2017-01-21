@@ -25,7 +25,7 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="/">
-            <h2 class="logo">Ck-12</h2>
+            <h2 class="logo">ClearTrip</h2>
           </a>
         </div>
 
@@ -67,7 +67,7 @@
           <div class="col-md-12">
             <div class="navbar-collapse collapse ">
               <ul id="menu-top" class="nav navbar-nav navbar-right">
-                <li><a class="menu-top-active" href="index.html">PathFinder</a></li>
+                <li><a class="menu-top-active" href="index.html">ClearTrip</a></li>
               </ul>
             </div>
           </div>
@@ -76,101 +76,9 @@
     </section>
     <!-- MENU SECTION END-->
   </div>
-  <div class="content-wrapper">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <h4 class="page-head-line">PathFinder</h4>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="panel panel-success">
-            <div class="panel-heading">
-              Path by selection
-            </div>
-            <div class="panel-body">
-              <button type="button" name="button" onclick="optimizeBy = SPEED; callPaths()" class="btn btn-success">SPEED</button> &nbsp;
-              <button type="button" name="button" onclick="optimizeBy = DISTANCE; callPaths()" class="btn btn-primary">DISTANCE</button>
-              <button type="button" name="button" onclick="clearSourceDest()" class="btn btn-danger">Clear Selections</button>
-
-
-              <br>
-              <label>Select Source : </label>
-              <select class="form-control" id="sel1">
-                <option value="">Select Source</option>
-                <option value="S">S</option>
-                <option value="T">T</option>
-                <option value="U">U</option>
-                <option value="V">V</option>
-                <option value="W">W</option>
-                <option value="X">X</option>
-              </select>
-              <label>Select Destination :  </label>
-              <select class="form-control" id="sel2">
-                <option value="">Select Destination</option>
-                <option value="S">S</option>
-                <option value="T">T</option>
-                <option value="U">U</option>
-                <option value="V">V</option>
-                <option value="W">W</option>
-                <option value="X">X</option>
-              </select>
-              <br>
-              <button type="button" name="button" class="btn btn-info"
-                onclick="callPaths()">
-                Show Paths
-              </button>
-              <br><br>
-              <p id="optimizeBy"></p>
-              <ul id="allPathList" class="list-group">
-
-              </ul>
-          </div>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="panel panel-danger">
-            <div class="panel-heading">
-              Path by Graph
-            </div>
-            <div class="panel-body">
-              <div class="col-xs-offset-4 col-xs-4 text-center">
-                <button type="button" name="button" class="btn btn-default btn-round" id="btnS" onclick="sourceDest(this.id,'S')">S</button>
-              </div>
-              <br><br><br>
-              <div class="col-xs-12">
-                <div class="col-xs-4 text-center">
-                  <button type="button" name="button" class="btn btn-default btn-round" id="btnW" onclick="sourceDest(this.id,'W')">W</button>
-                </div>
-                <div class="col-xs-4">
-
-                </div>
-                <div class="col-xs-4 text-center">
-                  <button type="button" name="button" class="btn btn-default btn-round" id="btnT" onclick="sourceDest(this.id,'T')">T</button>
-                </div>
-              </div>
-              <br><br><br>
-              <div class="col-xs-12">
-                <div class="col-xs-4 text-center">
-                  <button type="button" name="button" class="btn btn-default btn-round" id="btnX" onclick="sourceDest(this.id,'X')">X</button>
-                </div>
-                <div class="col-xs-4">
-
-                </div>
-                <div class="col-xs-4 text-center">
-                  <button type="button" name="button" class="btn btn-default btn-round" id="btnU" onclick="sourceDest(this.id,'U')">U</button>
-                </div>
-              </div>
-              <br><br><br>
-              <div class="col-xs-offset-4 col-xs-4 text-center">
-                <button type="button" name="button" class="btn btn-default btn-round" id="btnV" onclick="sourceDest(this.id,'V')">V</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="content-wrapper" ng-app="MyApp" ng-cloak>
+    <div class="container" ng-controller="HomeCtrl as home">
+      {{home.isLoading}}
     </div>
   </div>
   <!-- CONTENT-WRAPPER SECTION END-->
@@ -192,10 +100,14 @@
   <script src="vendor/jquery-1.11.1.js"></script>
   <!-- BOOTSTRAP SCRIPTS  -->
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+  <!-- AngularJS Libraries -->
+  <script src="vendor/angular.js"></script>
+  <script src="vendor/custom.js"></script>
   <!-- Application Code -->
-  <script src="pathFinder.js"></script>
-  <script src="custom.js"></script>
-  <script src="ga.js"></script>
+  <!-- Application Code -->
+  <script src="app.js"></script>
+  <script src="controllers/home.js"></script>
+  <script src="services/home.js"></script>
+
 </body>
 </html>
