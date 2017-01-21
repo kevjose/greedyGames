@@ -11,13 +11,7 @@ app.use(cors());
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
-// Force HTTPS on Heroku
-if (app.get('env') === 'production') {
-    app.use(function (req, res, next) {
-        var protocol = req.get('x-forwarded-proto');
-        protocol == 'https' ? next() : res.redirect('https://' + req.hostname + req.url);
-    });
-}
+
 app.use(express.static(path.join(__dirname, '/public')));
 
 
