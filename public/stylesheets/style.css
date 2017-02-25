@@ -1,6 +1,6 @@
 body {
-    font-family: 'Ubuntu', sans-serif;
-    line-height: 30px;
+    /*font-family: 'Ubuntu', sans-serif;*/
+    /*line-height: 30px;*/
 }
 
 .logo {
@@ -184,7 +184,7 @@ header {
   border-top: #09c solid 5px;
   top: 0px;
   position: fixed;
-  z-index: 2;
+  z-index: 5;
 }
 /* =============================================================
    FOOTER SECTION STYLES
@@ -311,4 +311,8 @@ footer {
 }
 .panel {
   min-height: 100px;
+}
+
+.active {
+  background-color: #dff0d8;
 }

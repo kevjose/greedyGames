@@ -1,1 +1,1 @@
-angular.module('MyApp', ['ngAnimate', 'toastr'])
+angular.module('MyApp', ['ngAnimate', 'toastr', 'ui.bootstrap', 'isteven-multi-select'])
