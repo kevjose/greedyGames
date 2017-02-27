@@ -13,6 +13,6 @@ function init() {
       header.className = "menu-section";
     }
   });
-  
+
 }
 window.onload = init();
