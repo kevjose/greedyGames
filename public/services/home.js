@@ -7,7 +7,8 @@
 
   HomeService.$inject = ['$http'];
   function HomeService($http) {
-    var baseUrl = 'http://104.197.128.152:8000/v1/'
+    var baseUrl = 'http://104.197.128.152:8000/v1/';
+    var soundCloudUrl = 'http://api.soundcloud.com/tracks?client_id=708abc176b8af0125b78392b9f132b4d';
     return {
       //List all tracks
       listAllTracks: function(page){
@@ -30,19 +31,10 @@
       },
       saveGenre: function(req){
         return $http.post(baseUrl+'genres/'+req.id, req)
+      },
+      searchSoundCloud: function(req){
+        return $http.get(soundCloudUrl+'&q='+req.query);
       }
-      // getProfile: function() {
-      //   return $http.get('/api/me');
-      // },
-      // getUsers: function() {
-      //   return $http.get('/api/user/all');
-      // },
-      // updateRole: function(data){
-      //   return $http.put('/api/user', data);
-      // },
-      // updateLoginCount: function(data){
-      //   return $http.put('/api/user/count', data);
-      // }
     };
   }
 })();
